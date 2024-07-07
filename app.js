@@ -27,7 +27,7 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
 // const mongo_url = "mongodb://127.0.0.1:27017/wanderlust";
-dbURL = process.env.ATLASTDB_URL;
+const dbURL = process.env.ATLASTDB_URL;
 
 main()
     .then(() => {
