@@ -57,9 +57,10 @@ const sessionOptions = {
     },
 };
 
-app.get("/", (req, res) => {
-    res.send("Hi, I am root");
-});
+// app.get("/", (req, res) => {
+//     // res.send("Hi, I am root");
+//     res.redirect("/login");
+// });
 
 // Session and flash
 app.use(session(sessionOptions));

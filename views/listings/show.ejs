@@ -37,15 +37,15 @@
      <% } %>   
 
 
-        <% if(currUser) { %>
-            <div class="col-8 offset-3 mb-3">
-                <hr>
-                <h4>Leave a Review</h4>
-                    <form action="/listings/<%= listing.id %>/reviews" method="post" novalidate class="needs-validation">
-                        <div class="mb-3 mt-3">
-                            <label for="rating" class="form-label"><h5>Rating </h5></label>
+    <% if(currUser) { %>
+    <div class="col-8 offset-3 mb-3">
+        <hr>
+            <h4>Leave a Review</h4>
+                <form action="/listings/<%= listing.id %>/reviews" method="post" novalidate class="needs-validation">
+                    <div class="mb-3 mt-3">
+                        <label for="rating" class="form-label"><h5>Rating </h5></label>
 
-                            <fieldset class="starability-slot">
+                        <fieldset class="starability-slot">
 
                                 <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
                                 <input type="radio" id="first-rate1" name="review[rating]" value="1" />
@@ -58,8 +58,8 @@
                                 <label for="first-rate4" title="Very good">4 stars</label>
                                 <input type="radio" id="first-rate5" name="review[rating]" value="5" />
                                 <label for="first-rate5" title="Amazing">5 stars</label>
-                              </fieldset>
-                        </div>      
+                        </fieldset>
+                    </div>      
 
                         <div class="mb-3 mt-3">
                             <label for="comment" class="form-label"><h5>Comments</h5></label>
@@ -74,16 +74,13 @@
                             <div class="invalid-feedback">Please add a review</div>
                         </div>
                         <button class="btn btn-outline-dark mt-3">Submit</button>
+                        <hr />
                     </form>
-            </div>   
         <% } %>    
 
-    
-
-            <hr>
-        <div class="col-8 offset-3 mb-3">
+        <% if(listing.reviews.length > 0) { %>
+            <div class="row row-cols-lg-3  row-cols-sm-1"> 
                 <p><b>All Review</b></p>
-            <div class="row row-cols-lg-3  row-cols-sm-1">
                     <% for(review of listing.reviews) { %>  
                         <div class="card col-5 mb-3 ms-4"> 
                             <div class="card-body">
@@ -97,9 +94,44 @@
                                     </form>
                                 <% } %>
                             </div>
-                            </div>
+                        </div>
                     <% } %> 
-                </div>    
-       
-    </div>
+            </div>  
+        <% } %>
+                
+            
+     <!-- </div>
+     <div class="col-8 offset-3 mb-3">
+        <h3>Where you'll be</h3>
+        <div id="map"></div>
+    </div>        -->
+
+    <!-- <script>
+        let mapToken = "<%= process.env.MAP_Token %>";
+        console.log(mapToken);
+        mapboxgl.accessToken = mapToken;
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: "mapbox://styles/mapbox/streets-v12",
+            center: [-74.5, 40], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+            zoom: 9 // starting zoom
+        });
+    </script> -->
+
+
+    <!-- <script> 
+        let mapToken = "<%= process.env.MAP_Token %>";
+        console.log(mapToken);
+        mapboxgl.accessToken = mapToken;
+        const map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/streets-v12",
+        center: [-74.5, 40],
+        // projection: 'globe', // Display the map as a globe, since satellite-v9 defaults to Mercator
+        zoom: 9
+         });
+    </script> -->
+
+    
+
 </body> 

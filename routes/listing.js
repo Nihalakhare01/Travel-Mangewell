@@ -25,14 +25,19 @@ router
 // New Route
 router.get("/new",isLoggedIn, ListingController.rendernewForm);
 
+// Search Route
+router.get("/search/:key",isLoggedIn, ListingController.searchListing);
+
 
 // show Route
 // update Route
 // Delete Listing
+
+
  router
     .route("/:id")  
     .get(isLoggedIn, wrapAsync(ListingController.showListing)) 
-    .put(isLoggedIn, isOwner, validateListing, wrapAsync(ListingController.updateListing))
+    .put(isLoggedIn, isOwner, upload.single("listing[image]") ,validateListing, wrapAsync(ListingController.updateListing))
     .delete(isLoggedIn,isOwner, wrapAsync(ListingController.deleteListing));
 
 // Edit Route

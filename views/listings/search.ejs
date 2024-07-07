@@ -1,4 +1,5 @@
 <% layout("/layouts/boilerplate.ejs") %> 
+
 <body>
     <style>
         #filters{
@@ -99,10 +100,9 @@
                 </div>
              </div>
         </div>
-
-
+    
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
-        <% for(let listing of allListings) { %>
+        <% for(let listing of data) { %>
        <a href="/listings/<%= listing._id %>" class="listing-link">   
         <div class="card col listing-card" >
             <img src="<%= listing.image.url %>" class="card-img-top shadow-lg" alt="listing-image" style="height: 20rem;"/>
@@ -119,21 +119,21 @@
         <% } %>
     </div>
 
-<script>
-    let taxSwitch = document.getElementById("flexSwitchCheckDefault");
-    taxSwitch.addEventListener("click", () => {
-        let taxinfo = document.getElementsByClassName("tax-info");
-        for(info of taxinfo){
-            if(info.style.display != "inline"){
-                info.style.display = "inline";
-            }else{
-                info.style.display = "none";
-            }    
-        }
-    }); 
-</script>
 
+
+    <script>
+        let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+        taxSwitch.addEventListener("click", () => {
+            let taxinfo = document.getElementsByClassName("tax-info");
+            for(info of taxinfo){
+                if(info.style.display != "inline"){
+                    info.style.display = "inline";
+                }else{
+                    info.style.display = "none";
+                }    
+            }
+        }); 
+    </script>
+    
 
 </body>
-
-
